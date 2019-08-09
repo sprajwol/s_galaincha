@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Smart Galaincha</title>
+
+    {% load static %}
+    <!-- ALL CSS LINKING ARE HERE -->
+    <!-- Normalize CSS Linking -->
+    <link rel="stylesheet" type="text/css" href="{% static 'mains/vendors/NormalizeCSS/normalize.css' %}">
+    <!-- Bootstrap 4 Linking -->
+    <link rel="stylesheet" type="text/css" href="{% static 'mains/vendors/Bootstrap4/css/bootstrap.css' %}">
+    <!-- Font Awesome Linking -->
+    <link rel="stylesheet" type="text/css" href="{% static 'mains/vendors/fontawesome/css/all.css' %}">
+    <!-- Owl carousel 2 Linking -->
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'mains/vendors/OwlCarousel2/dist/assets/owl.carousel.css' %}">
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'mains/vendors/OwlCarousel2/dist/assets/owl.theme.default.css' %}">
+    <!-- WOW animation Stylesheet Linking -->
+    <link rel="stylesheet" type="text/css" href="{% static 'mains/vendors/WOW-js/css/libs/animate.css' %}">
+    <!-- LightBox Gallery CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'mains/vendors/LightBox/src/css/lightbox.css' %}">
+
+</head>
+
+<body>
+    <!-- <header>
+
+
+        <nav>
+            header
+        </nav>
+
+    </header> -->
+
+    <main>
+        <div class="container">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </main>
+
+    <!-- <footer>
+        footer
+    </footer> -->
+
+    <!-- ALL JS LINKING ARE HERE -->
+    <!-- JQuery JS Linking -->
+    <script type="text/javascript" src="{% static 'mains/vendors/jQuery/jQuery.js' %}"></script>
+    <!-- Bootstrap 4 JS Linking -->
+    <script type="text/javascript" src="{% static 'mains/vendors/Bootstrap4/js/bootstrap.js' %}"></script>
+    <!-- Owl carousel 2 JS Linking -->
+    <script type="text/javascript" src="{% static 'mains/vendors/OwlCarousel2/dist/owl.carousel.js' %}"></script>
+    <!-- WOW Stylesheet JS Linking and initialization-->
+    <script src="{% static 'mains/vendors/WOW-master/dist/wow.js' %}"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <!-- LightBox Gallery JS-->
+    <script type="text/javascript" src="{% static 'mains/vendors/LightBox/src/js/lightbox.js' %}"></script>
+
+</body>
+
+</html>
