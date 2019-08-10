@@ -1,0 +1,10 @@
+{% extends 'login_system/base.html' %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'login_system/customs/css/profile_style.css' %}">
+<div class="profileBlock">
+    <h1>{{ user.username }}</h1>
+</div>
+{% endblock %}

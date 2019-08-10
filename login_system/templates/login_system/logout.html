@@ -4,10 +4,12 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'login_system/customs/css/logout_style.css' %}">
 <div>
-    <p>You have been logged out !!!</p>
+    <h2>You have been logged out !!!</h2>
 
     <div class="border-top pt-3">
         <small class="text-muted">Log back in? <a href="{% url 'login' %}" class="ml-2">Click here to Login</a></small>
+        <small class="text-muted">Go to Homepage? <a href="{% url 'home' %}" class="ml-2">Click here to go to
+                Homepage</a></small>
     </div>
 </div>
 {% endblock %}
