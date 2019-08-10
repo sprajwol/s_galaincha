@@ -50,11 +50,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'about' %}">About</a>
                     </li>
+                    {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="#">Estimate</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Results</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">

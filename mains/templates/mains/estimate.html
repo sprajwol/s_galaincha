@@ -1,0 +1,12 @@
+{% extends 'home/base.html' %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'home/customs/css/estimate_style.css' %}">
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" name="submit">Upload</button>
+</form>
+{% endblock %}
