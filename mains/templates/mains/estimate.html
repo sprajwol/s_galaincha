@@ -1,9 +1,9 @@
-{% extends 'home/base.html' %}
+{% extends 'mains/base.html' %}
 
 {% load crispy_forms_tags %}
 {% block content %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'home/customs/css/estimate_style.css' %}">
+<link rel="stylesheet" href="{% static 'mains/customs/css/estimate_style.css' %}">
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form|crispy }}
