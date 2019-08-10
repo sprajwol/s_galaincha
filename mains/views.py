@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 
 from .forms import Design_Form
-
+from .canny import mainpart
 # Create your views here.
 
 
@@ -26,15 +26,15 @@ def estimate(request):
             myfile = request.FILES["design_input"]
             print(myfile)
             filename = myfile.name
-        #     ur = "media\\images\\" + filename
+            url = "media\\inp_images\\" + filename
         #     url = os.path.join(PROJECT_ROOT, ur)
-        #     print(url)
-        #     print(filename)
+            print(url)
+            print(filename)
         #     image = cv2.imread(
         #         "media\\images\\as.png")
         #     print("ASAAA")
         #     print(image)
-        #     mainpart(image)
+            mainpart(url)
         #     return HttpResponseRedirect('estimate')
     else:
         form = Design_Form()
