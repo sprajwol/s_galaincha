@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'crispy_forms',
+    'phonenumber_field',
     'mains.apps.MainsConfig',
     'login_system.apps.LoginSystemConfig',
 ]
@@ -127,6 +128,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+PHONENUMBER_DB_FORMAT = 'INTERNATIONAL'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'

@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 from login_system import views as login_system_views
 
@@ -30,3 +32,7 @@ urlpatterns = [
         template_name='login_system/logout.html'), name='logout'),
     path('profile', login_system_views.profile, name='profile'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

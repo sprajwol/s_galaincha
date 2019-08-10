@@ -1,10 +1,21 @@
-{% extends 'login_system/base.html' %}
+{% extends 'mains/base.html' %}
 
 {% load crispy_forms_tags %}
 {% block content %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'login_system/customs/css/profile_style.css' %}">
 <div class="profileBlock">
-    <h1>{{ user.username }}</h1>
+    <div class="content-section">
+        <div class="profile-group">
+            <div class="profile-body">
+                <h2 class="account-heading"><b>Username:</b> {{ user.username }}</h2>
+                <p class="text-secondary"><b>Name:</b> {{ user.first_name }} {{ user.last_name }}</p>
+                <p class="text-secondary"><b>Email:</b> {{ user.email }}</p>
+                <p class="text-secondary"><b>Phone Number:</b> {{ user.profile.phone_number }}</p>
+                <p class="text-secondary"><b>Current Address:</b> {{ user.profile.current_address }}</p>
+                <p class="text-secondary"><b>Permanent Address:</b> {{ user.profile.permanent_address }}</p>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
