@@ -184,6 +184,7 @@ def mainpart(filename, inurl, outurl):
     inverted_image_list = np.reshape(
         inverted_image, (xlength*ylength,)).tolist()
     new_file = "A7_" + file + ext
+    onlyfile = "A7_" + file
     az = PROJECT_ROOT + "\\"
     az_url = az + outurl + new_file
     # + outurl + new_file
@@ -198,8 +199,9 @@ def mainpart(filename, inurl, outurl):
     # TODO: detect the shape and calculate area
     # """import matlab.engine ko ho not working"""
     eng = matlab.engine.start_matlab()
-    ret = eng.shapee(az, outurl, new_file)
-
+    txt, aaa = eng.shapee(az, outurl, new_file, onlyfile, nargout=2)
+    print(txt)
+    print(aaa)
     """Making image on every step"""
     """STEP 1:Converting to GRAYSCALE"""
     original_gray_list = np.reshape(original_gray, (xlength*ylength,)).tolist()
@@ -259,3 +261,5 @@ def mainpart(filename, inurl, outurl):
         output_image.save(new_file, in_image.format)
     except(IOError):
         print("Output file error7:")
+
+    return txt, aaa

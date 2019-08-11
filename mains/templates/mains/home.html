@@ -3,5 +3,17 @@
 {% block content %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'mains/customs/css/home_style.css' %}">
-Home
+<div class="homeBlock">
+    <div class="text">
+        <h2>UPLOAD • DETECT • ESTIMATE • VIEW</h2>
+        <h4>CREATIVE & EXPERIENCED</h4>
+        <h3>Estmaite with accuracy</h3>
+        {% if user.is_authenticated %}
+
+        {% else %}
+        <a class="nav-link" href="{% url 'login' %}"><button id="buttonone">Log In</button></a>
+        <a class="nav-link" href="{% url 'signup' %}"><button id="buttontwo">Join us Now</button></a>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

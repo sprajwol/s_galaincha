@@ -3,6 +3,7 @@
 db.sqlite3
 */*/*/vendors
 */migrations/*
-media/
+media/inp_images
+media/out_images
 *.png
-*.jpg
+*/static/*/package

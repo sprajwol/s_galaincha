@@ -1,15 +1,21 @@
-{% extends 'login_system/base.html' %}
+{% extends 'mains/base.html' %}
 
 {% block content %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'login_system/customs/css/logout_style.css' %}">
-<div>
+<div class="logoutBlock pt-5">
     <h2>You have been logged out !!!</h2>
 
     <div class="border-top pt-3">
-        <small class="text-muted">Log back in? <a href="{% url 'login' %}" class="ml-2">Click here to Login</a></small>
-        <small class="text-muted">Go to Homepage? <a href="{% url 'home' %}" class="ml-2">Click here to go to
-                Homepage</a></small>
+        <p>
+            <small>Log back in? <a href="{% url 'login' %}" class="ml-2"
+                    style="text-decoration: none; font-weight:bold; color:brown;">Click here to Login</a></small>
+        </p>
+        <p>
+            <small>Go to Homepage? <a href="{% url 'home' %}" class="ml-2"
+                    style="text-decoration: none; font-weight:bold; color:brown;">Click here to go to
+                    Homepage</a></small>
+        </p>
     </div>
 </div>
 {% endblock %}

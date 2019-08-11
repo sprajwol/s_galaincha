@@ -27,4 +27,4 @@ class Design(models.Model):
     design_uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.user.username} Design Gallery'
+        return f'{self.design_title} Design'

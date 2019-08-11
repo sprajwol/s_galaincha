@@ -4,9 +4,21 @@
 {% block content %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'mains/customs/css/estimate_style.css' %}">
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <button type="submit" name="submit">Upload</button>
-</form>
+<div class="estimateBlock pt-5">
+    <div class="heading border-bottom">
+        <h2>
+            Estimate
+        </h2>
+        <br>
+    </div>
+    <div class="body">
+        <div class="form-group">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" name="submit">Upload</button>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

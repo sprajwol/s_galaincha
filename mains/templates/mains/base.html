@@ -16,27 +16,29 @@
     {% load static %}
     <!-- ALL CSS LINKING ARE HERE -->
     <!-- Normalize CSS Linking -->
-    <link rel="stylesheet" type="text/css" href="{% static 'mains/vendors/NormalizeCSS/normalize.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'mains/package/NormalizeCSS/normalize.css' %}">
     <!-- Bootstrap 4 Linking -->
-    <link rel="stylesheet" type="text/css" href="{% static 'mains/vendors/Bootstrap4/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'mains/package/Bootstrap4/css/bootstrap.css' %}">
     <!-- Font Awesome Linking -->
-    <link rel="stylesheet" type="text/css" href="{% static 'mains/vendors/fontawesome/css/all.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'mains/package/fontawesome/css/all.css' %}">
     <!-- Owl carousel 2 Linking -->
     <link rel="stylesheet" type="text/css"
-        href="{% static 'mains/vendors/OwlCarousel2/dist/assets/owl.carousel.css' %}">
+        href="{% static 'mains/package/OwlCarousel2/dist/assets/owl.carousel.css' %}">
     <link rel="stylesheet" type="text/css"
-        href="{% static 'mains/vendors/OwlCarousel2/dist/assets/owl.theme.default.css' %}">
+        href="{% static 'mains/package/OwlCarousel2/dist/assets/owl.theme.default.css' %}">
     <!-- WOW animation Stylesheet Linking -->
-    <link rel="stylesheet" type="text/css" href="{% static 'mains/vendors/WOW-js/css/libs/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'mains/package/WOW-js/css/libs/animate.css' %}">
     <!-- LightBox Gallery CSS-->
-    <link rel="stylesheet" type="text/css" href="{% static 'mains/vendors/LightBox/src/css/lightbox.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'mains/package/LightBox/src/css/lightbox.css' %}">
 
+    <link rel="stylesheet" type="text/css" href="{% static 'mains/customs/css/base_style.css' %}">
 </head>
 
-<body>
+<body class="bgimage">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="{% url 'home' %}"><img src="../../../media/web/logo.JPG" alt="SG"
+                    style="max-width: 5rem"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -55,12 +57,9 @@
                         <a class="nav-link" href="{% url 'estimate' %}">Estimate</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Results</a>
+                        <a class="nav-link" href="{% url 'results' %}">Results</a>
                     </li>
                     {% endif %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
                 </ul>
                 <ul class="navbar-nav">
                     {% if user.is_authenticated %}
@@ -76,8 +75,7 @@
                         </div>
                     </li>
                     {% else %}
-                    <a class="nav-link" href="{% url 'login' %}">Log In</a>
-                    <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+
                     {% endif %}
                 </ul>
             </div>
@@ -108,18 +106,18 @@
 
     <!-- ALL JS LINKING ARE HERE -->
     <!-- JQuery JS Linking -->
-    <script type="text/javascript" src="{% static 'mains/vendors/jQuery/jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'mains/package/jQuery/jquery-3.3.1.min.js' %}"></script>
     <!-- Bootstrap 4 JS Linking -->
-    <script type="text/javascript" src="{% static 'mains/vendors/Bootstrap4/js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'mains/package/Bootstrap4/js/bootstrap.js' %}"></script>
     <!-- Owl carousel 2 JS Linking -->
-    <script type="text/javascript" src="{% static 'mains/vendors/OwlCarousel2/dist/owl.carousel.js' %}"></script>
+    <script type="text/javascript" src="{% static 'mains/package/OwlCarousel2/dist/owl.carousel.js' %}"></script>
     <!-- WOW Stylesheet JS Linking and initialization-->
-    <script src="{% static 'mains/vendors/WOW-js/dist/wow.js' %}"></script>
+    <script src="{% static 'mains/package/WOW-js/dist/wow.js' %}"></script>
     <script>
         new WOW().init();
     </script>
     <!-- LightBox Gallery JS-->
-    <script type="text/javascript" src="{% static 'mains/vendors/LightBox/src/js/lightbox.js' %}"></script>
+    <script type="text/javascript" src="{% static 'mains/package/LightBox/src/js/lightbox.js' %}"></script>
 
 </body>
 

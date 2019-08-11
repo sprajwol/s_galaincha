@@ -4,16 +4,18 @@
 {% block content %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'login_system/customs/css/profile_style.css' %}">
-<div class="profileBlock">
-    <div class="content-section">
+<div class="profileBlock pt-5">
+    <div class="content-head border-bottom">
+        <h2 class="account-heading">{{ user.username }}'s Profile</h2>
+    </div>
+    <div class="content-section pt-3">
         <div class="profile-group">
             <div class="profile-body">
-                <h2 class="account-heading"><b>Username:</b> {{ user.username }}</h2>
-                <p class="text-secondary"><b>Name:</b> {{ user.first_name }} {{ user.last_name }}</p>
-                <p class="text-secondary"><b>Email:</b> {{ user.email }}</p>
-                <p class="text-secondary"><b>Phone Number:</b> {{ user.profile.phone_number }}</p>
-                <p class="text-secondary"><b>Current Address:</b> {{ user.profile.current_address }}</p>
-                <p class="text-secondary"><b>Permanent Address:</b> {{ user.profile.permanent_address }}</p>
+                <p><b>Name:</b> {{ user.first_name }} {{ user.last_name }}</p>
+                <p><b>Email:</b> {{ user.email }}</p>
+                <p><b>Phone Number:</b> {{ user.profile.phone_number }}</p>
+                <p><b>Current Address:</b> {{ user.profile.current_address }}</p>
+                <p><b>Permanent Address:</b> {{ user.profile.permanent_address }}</p>
             </div>
         </div>
     </div>

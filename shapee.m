@@ -1,12 +1,18 @@
-function otherArea = shapee(az, outurl, new_file)
+function [txt, aaa]  = shapee(az, outurl, new_file, onlyfile)
     image = strcat(az, outurl, new_file)
-    aaa = "final_"
-    outf = strcat(az, outurl, aaa, new_file)
+    aaa = strcat("final_", new_file)
+    txt = strcat("final_", onlyfile, ".txt")
+    outf = strcat(az, outurl, aaa)
+    outt = strcat(az, outurl, txt)
+
+    fileID = fopen(outt,'w');
+
     WB = imread(image);
     BW = imcomplement(WB);
     [B,L,N,A] = bwboundaries(BW);
     imshow(BW); hold on;
     colors=['b' 'g' 'r' 'c' 'm' 'y'];
+    
     
     
     for k=1:length(B),
@@ -23,8 +29,11 @@ function otherArea = shapee(az, outurl, new_file)
 
         props = regionprops(B{k});
         otherArea = sum([props.Area]);
-        fprintf('Area of shape %i = %i.\n', k,otherArea)
+
+        fprintf(fileID, 'Area of shape %i = %i.\n', k,otherArea)
     end
+    fclose(fileID);
+
     F = getframe;
     imwrite(F.cdata, outf, 'png');
 end

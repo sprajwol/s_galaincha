@@ -1,10 +1,12 @@
-{% extends 'login_system/base.html' %}
+{% extends 'mains/base.html' %}
 {% load crispy_forms_tags %}
 
 {% block content %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'login_system/customs/css/signup_style.css' %}">
-<div>
+
+
+<div class="signupBlock pt-5">
     <form method="POST">
         {% csrf_token %}
         <legend class="border-bottom mb-4">
@@ -12,11 +14,12 @@
         </legend>
         {{ form|crispy }}
         <div class="form-group">
-            <button class="btn btn-outline-info btnSignUp" type="submit">Sign Up</button>
+            <button class="btn btn-primary btnSignUp" type="submit">Sign Up</button>
         </div>
     </form>
     <div class="border-top pt-3">
-        <small class="text-muted">Already have an Account?, <a href="#">Click here to
+        <small>Already have an Account?, <a href="{% url 'login' %}" class="ml-2 "
+                style="text-decoration: none; font-weight:bold; color:brown;">Click here to
                 Log In</a>
             instead.</small>
     </div>
