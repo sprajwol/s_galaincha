@@ -10,6 +10,7 @@ import matlab.engine
 
 from .sobel import sobel_edge_detection
 from .gaussian_smoothing import gaussian_blur
+from s_galaincha.settings import PROJECT_ROOT
 
 
 def threshold(image, low, high, weak):
@@ -130,8 +131,9 @@ def inverte(imagem):
     return imagem
 
 
-def mainpart(input_file):
+def mainpart(filename, inurl, outurl):
     """Reading an image"""
+    input_file = inurl + filename
     infile = open(input_file, "rb")
     in_image = Image.open(infile)
     """Canny Edge Detection process started"""
@@ -141,7 +143,8 @@ def mainpart(input_file):
     image_list = list(in_image.getdata())
     """Getting image attributes from image"""
     xlength, ylength = in_image.size
-    file, ext = os.path.splitext(input_file)
+    file, ext = os.path.splitext(filename)
+    print(file, "a", ext)
     """Reshaping image pixels in (xlength,ylength) array"""
     original_gray = np.reshape(np.array(image_list), (ylength, xlength))
 
@@ -175,27 +178,27 @@ def mainpart(input_file):
     dialted_image = cv2.erode(dialted_image, None, iterations=1)
     """INVERT IMAGE"""
     # image = cv2.imread(new_file)
-    inverted_image = inverte(dialted_image)
+    inverted_image = dialted_image
 
     """SAVE INVERT IMAGE"""
     inverted_image_list = np.reshape(
         inverted_image, (xlength*ylength,)).tolist()
     new_file = "A7_" + file + ext
+    az = PROJECT_ROOT + "\\"
+    az_url = az + outurl + new_file
+    # + outurl + new_file
+    print("AZ", az_url)
     try:
         output_image = Image.new(in_image.mode, in_image.size, None)
         output_image.putdata(inverted_image_list)
-        output_image.save(new_file, in_image.format)
+        output_image.save(az_url, in_image.format)
     except(IOError):
-        print("Output file error:")
+        print("Output file error1:")
 
     # TODO: detect the shape and calculate area
     # """import matlab.engine ko ho not working"""
     eng = matlab.engine.start_matlab()
-    ret = eng.shapee(new_file)
-    # cv2.imwrite(F, cvImage)
-    print(ret[0])
-    plt.plot(ret[1])
-    plt.show()
+    ret = eng.shapee(az, outurl, new_file)
 
     """Making image on every step"""
     """STEP 1:Converting to GRAYSCALE"""
@@ -206,7 +209,7 @@ def mainpart(input_file):
         output_image.putdata(original_gray_list)
         output_image.save(new_file, in_image.format)
     except(IOError):
-        print("Output file error:")
+        print("Output file error2:")
     """STEP 2:Gaussian Kernel Filter"""
     blurred_image_list = np.reshape(blurred_image, (xlength*ylength,)).tolist()
     new_file = "A2_" + file + ext
@@ -215,7 +218,7 @@ def mainpart(input_file):
         output_image.putdata(blurred_image_list)
         output_image.save(new_file, in_image.format)
     except(IOError):
-        print("Output file error:")
+        print("Output file error3:")
     """STEP 3:Sobel Edge Detection and Non-Maximum Suppression"""
     sobel_n_nonmax_list = np.reshape(
         sobel_n_nonmax, (xlength*ylength,)).tolist()
@@ -225,7 +228,7 @@ def mainpart(input_file):
         output_image.putdata(sobel_n_nonmax_list)
         output_image.save(new_file, in_image.format)
     except(IOError):
-        print("Output file error:")
+        print("Output file error4:")
     """STEP 4:Double Thresholding"""
     double_thresholding_list = np.reshape(
         double_thresholding, (xlength*ylength,)).tolist()
@@ -235,7 +238,7 @@ def mainpart(input_file):
         output_image.putdata(double_thresholding_list)
         output_image.save(new_file, in_image.format)
     except(IOError):
-        print("Output file error:")
+        print("Output file error5:")
     """STEP 5:Hysteris"""
     hysteresis_image_list = np.reshape(
         hysteresis_image, (xlength*ylength,)).tolist()
@@ -245,7 +248,7 @@ def mainpart(input_file):
         output_image.putdata(hysteresis_image_list)
         output_image.save(new_file, in_image.format)
     except(IOError):
-        print("Output file error:")
+        print("Output file error6:")
     """DILATED & ERODED"""
     dialted_image_list = np.reshape(
         dialted_image, (xlength*ylength,)).tolist()
@@ -255,4 +258,4 @@ def mainpart(input_file):
         output_image.putdata(dialted_image_list)
         output_image.save(new_file, in_image.format)
     except(IOError):
-        print("Output file error:")
+        print("Output file error7:")

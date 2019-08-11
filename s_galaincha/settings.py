@@ -127,6 +127,8 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+PROJECT_ROOT = os.path.join(BASE_DIR)
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 PHONENUMBER_DB_FORMAT = 'INTERNATIONAL'
 

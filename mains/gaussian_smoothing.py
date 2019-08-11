@@ -24,8 +24,9 @@ def gaussian_blur(image, kernel_size):
     kernel = gaussian_kernel(
         kernel_size, sigma=math.sqrt(kernel_size))
     blured = convolution(image, kernel, average=True)
+    cv2.imwrite('01.png', blured)
     plt.imshow(blured, cmap='gray')
-    plt.savefig('blured.jpg')
+    plt.savefig('blured.png')
     # plt.show()
 
     return blured
